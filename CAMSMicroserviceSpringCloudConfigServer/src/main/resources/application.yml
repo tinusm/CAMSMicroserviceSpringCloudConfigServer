@@ -1,0 +1,25 @@
+server:
+  port: 8009
+  context-path: /configserver
+  tomcat:
+    accesslog:
+      enabled: true
+      pattern: '%t [%A:%p] [%h] [%I] %l %u "%r" %s %b %D'
+      directory: /logs
+      prefix: configserver_server_accesslog
+      suffix: .log
+
+logging:
+  level:
+    org.springframework.security: INFO
+    org.springframework.data: INFO
+    com.netflix.discovery: INFO
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/tinusm/config.git
+          searchPaths: config/application.properties
+          
